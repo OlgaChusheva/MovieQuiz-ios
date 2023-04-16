@@ -14,7 +14,11 @@ protocol MoviesLoading {
 
 struct MoviesLoader: MoviesLoading {
     // MARK: - NetworkClient
-    private let networkClient = NetworkClient()
+    private let networkClient: NetworkRouting
+    
+    init(networkClient: NetworkRouting = NetworkClient()) {
+        self.networkClient = networkClient
+    }
     
     // MARK: - URL
     private var mostPopularMoviesUrl: URL {
@@ -42,6 +46,4 @@ struct MoviesLoader: MoviesLoading {
     }
 }
 
-
-// curl https://imdb-api.com/en/API/Top250Movies/k_28pvudgf | json_pp -json_opt pretty,canonical
 
