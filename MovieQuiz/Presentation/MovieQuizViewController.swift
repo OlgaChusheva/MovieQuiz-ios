@@ -1,6 +1,6 @@
 import UIKit
 
-final class MovieQuizViewController: UIViewController {
+final class MovieQuizViewController: UIViewController, MovieQuizViewControllerProtocol {
     
     
     // MARK: - Lifecycle
@@ -32,14 +32,14 @@ final class MovieQuizViewController: UIViewController {
     
     //MARK: - Private function
     
-    func show(quize step: QuizStepViewModel) {
+    func show(quiz step: QuizStepViewModel) {
         imageView.layer.borderColor=UIColor.clear.cgColor
         imageView.image = step.image
         textLabel.text = step.text
         counterLabel.text = step.questionNumber
     }
     
-    func show(quize result: QuizResultsViewModel) {
+    func show(quiz result: QuizResultsViewModel) {
         let message = presenter.makeResultsMessage()
         
         let alertModel = UIAlertController(
@@ -73,7 +73,7 @@ final class MovieQuizViewController: UIViewController {
     func hideLoadingIndicator() {
         activityIndicator.isHidden = true }
         
-        func showNetworkError(message: String) {
+    func showNetworkError(message: String) {
             hideLoadingIndicator()
             
             let alert = UIAlertController(
