@@ -42,7 +42,7 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     func show(quiz result: QuizResultsViewModel) {
         let message = presenter.makeResultsMessage()
         
-        let alertModel = UIAlertController(
+        let alert = UIAlertController(
             title: result.title,
             message: message,
             preferredStyle: .alert)
@@ -53,9 +53,9 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
             self.presenter.restartGame()
         }
         
-        alertModel.addAction(action)
+        alert.addAction(action)
         
-        self.present(alertModel, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
         
     }
     
